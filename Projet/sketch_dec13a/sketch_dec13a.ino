@@ -50,7 +50,7 @@ void loop()
   char typeFilaments[][5] = {"PLA","ABS"};
   float longueurFilament [] = {2.98,2.50};
   int NB_TYPE = sizeof(typeBobine)/sizeof(typeBobine[0])-1;
-  
+  int NB_FILAMENT = sizeof(typeFilaments)/sizeof(typeFilaments[0])-1;
  joystick = analogRead(A0)* (5.0 / 1023.0);
  
   Serial.println(joystick  );
@@ -64,7 +64,7 @@ void loop()
  if(joystick > 3.62 && joystick < 3.64) // en haut
  {
   indexFilaments++;
-    if (indexFilaments > 1)
+    if (indexFilaments > NB_FILAMENT)
     {
       indexFilaments = 0;
     }
@@ -84,12 +84,12 @@ void loop()
    indexFilaments--;
     if (indexFilaments < 0)
     {
-      indexFilaments = 1;
+      indexFilaments = NB_FILAMENT;
     }
  }
  else if(joystick > 0.69 && joystick < 0.71)   // appuie sur le bouton
  {
-  decalage = lire3428(adresseCAN, 0) *1000* 1.001 + 55.302;
+  decalage = lire3428(adresseCAN, 0) *1000* 1.00095 + 53.397;
   while(joystick > 0.69 && joystick < 0.71)
   {
     joystick = analogRead(A0)* (5.0 / 1023.0);
@@ -106,7 +106,7 @@ void loop()
   
  for(int i=0;i<15;i++)
  {
-  masse = (lire3428(adresseCAN, 0) * 1000 * 1.001 + 55.302 - decalage - bobine[indexType]);
+  masse = (lire3428(adresseCAN, 0) * 1000 * 1.00095 + 53.397 - decalage - bobine[indexType]);
   moyenne = masse*0.4+0.60*moyenne;
  }
  monLCD.writeString(0, 3, "      ", MENU_NORMAL);
