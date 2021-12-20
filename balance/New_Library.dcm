@@ -1,0 +1,15 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP Arduino_Mega2560
+D Shield for Arduino Mega 2560
+K Arduino MPU Shield
+F https://store.arduino.cc/arduino-mega-2560-rev3
+$ENDCMP
+#
+$CMP MCP3428
+D 16-Bit, Multi-Channel ΔΣ Analog-to-Digital Converter with I2C Interface and On-Board Reference, SOIC-14/TSSOP-14
+K adc 4ch 16bit i2c
+F http://ww1.microchip.com/downloads/en/DeviceDoc/22226a.pdf
+$ENDCMP
+#
+#End Doc Library
