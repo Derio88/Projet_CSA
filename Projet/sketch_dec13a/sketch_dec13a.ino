@@ -24,8 +24,8 @@ float decalage = 0;
 
 int indexType = 0;
 int indexFilaments = 0;
-float longueurFilament [] = {2.98,2.50};
-float bobine[] = {200,150,0};
+float longueurFilament [] = {2.98,2.50,3.05};
+float bobine[] = {224,232,0};
 
 void setup()
 {
@@ -47,7 +47,7 @@ void setup()
 void loop()
 {
   char typeBobine[][20] = {"Plastique  ","Carton     ","Sans Bobine"};
-  char typeFilaments[][5] = {"PLA","ABS"};
+  char typeFilaments[][5] = {"PLA ","ABS ","PETG"};
   float longueurFilament [] = {2.98,2.50};
   int NB_TYPE = sizeof(typeBobine)/sizeof(typeBobine[0])-1;
   int NB_FILAMENT = sizeof(typeFilaments)/sizeof(typeFilaments[0])-1;
@@ -89,6 +89,7 @@ void loop()
  }
  else if(joystick > 0.69 && joystick < 0.71)   // appuie sur le bouton
  {
+  moyenne = 0;
   decalage = lire3428(adresseCAN, 0) *1000* 1.00095 + 53.397;
   while(joystick > 0.69 && joystick < 0.71)
   {
@@ -107,7 +108,7 @@ void loop()
  for(int i=0;i<15;i++)
  {
   masse = (lire3428(adresseCAN, 0) * 1000 * 1.00095 + 53.397 - decalage - bobine[indexType]);
-  moyenne = masse*0.4+0.60*moyenne;
+  moyenne = masse*0.1+0.90*moyenne;
  }
  monLCD.writeString(0, 3, "      ", MENU_NORMAL);
  monLCD.writeString(0, 4, "      ", MENU_NORMAL);
