@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name New_Library)(type Legacy)(uri ${KIPRJMOD}/New_Library.lib)(options "")(descr ""))
+  (lib (name Arduino)(type Legacy)(uri ${KIPRJMOD}/Arduino.lib)(options "")(descr ""))
+  (lib (name arduino)(type Legacy)(uri ${KIPRJMOD}/arduino.lib)(options "")(descr ""))
+)
